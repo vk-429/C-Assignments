@@ -8,14 +8,15 @@ class shape
         double b;
         double area;
     public:
-        void get_data(double a,double b=0)
+        void get_data(double a,double b=1)
         {
             this->a=a;
             this->b=b;
         }
         virtual void display_Area()
         {
-            area=a*b;
+            if(b==1) area=a*a;
+            else area=a*b;
         } 
         double get_area()
         {
@@ -40,10 +41,21 @@ class Triangle:public shape
             cout<<"Area of Triangle is "<<get_area()/2<<"\n\n";
         }
 };
+class Circle:public shape
+{
+    public:
+        void display_Area()
+        {
+            shape::display_Area();
+            cout<<"Area of Cicle is "<<3.14*get_area()<<"\n\n";
+        }
+
+};
 int main()
 {
     Rectangle R1;
     Triangle T1;
+    Circle C1;
     shape s1;
     shape *s;
     double a,b;
@@ -52,20 +64,32 @@ int main()
     {
         cout<<"1. Calculate Area of Triangle\n";
         cout<<"2. Calculate Area of Rectangle\n";
-        cout<<"3. Exit\n\n";
+        cout<<"3. Calculate Area of Circle\n";
+        cout<<"4. Exit\n\n";
         cout<<"Enter Your Choice : ";
         cin>>choice;
         if(choice==1)
         {
             cout<<"Enter base and height of the triangle : ";
             s=&T1;
+            cin>>a>>b;
+            s->get_data(a,b);
         }
         else if(choice==2)
         {
             cout<<"Enter height and width of the rectangle : ";
             s=&R1;
+            cin>>a>>b;
+            s->get_data(a,b);
         }
         else if(choice==3)
+        {
+            cout<<"Enter radius of the circle : ";
+            s=&C1;
+            cin>>a;
+            s->get_data(a);
+        }
+        else if(choice==4)
         {
             exit(0);
         }
@@ -74,8 +98,6 @@ int main()
             cout<<"Invalid Choice !\n\n";
             continue;
         }
-        cin>>a>>b;
-        s->get_data(a,b);
         s->display_Area();
     }
     return 0;

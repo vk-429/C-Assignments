@@ -3,32 +3,24 @@ using namespace std;
 
 class shape
 {
-    private:
+    protected:
         double a;
         double b;
-        double area;
     public:
-        void get_data(double a,double b=0)
+        void get_data(double a,double b)
         {
             this->a=a;
             this->b=b;
         }
-        virtual void display_Area()
-        {
-            area=a*b;
-        } 
-        double get_area()
-        {
-            return area;
-        }
+        virtual void display_Area()=0;
 };
 class Rectangle:public shape
 {
     public:
         void display_Area()
         {
-            shape::display_Area();
-            cout<<"Area of Rectangle is "<<get_area()<<"\n\n";
+            double area=a*b;
+            cout<<"Area of Rectangle is "<<area<<"\n\n";
         }
 };
 class Triangle:public shape
@@ -36,16 +28,15 @@ class Triangle:public shape
     public:
         void display_Area()
         {
-            shape::display_Area();
-            cout<<"Area of Triangle is "<<get_area()/2<<"\n\n";
+            double area=(0.5*a*b);
+            cout<<"Area of Triangle is "<<area<<"\n\n";
         }
 };
 int main()
 {
-    Rectangle R1;
-    Triangle T1;
-    shape s1;
     shape *s;
+    Triangle T1;
+    Rectangle R1;
     double a,b;
     int choice;
     while(1)
@@ -58,12 +49,12 @@ int main()
         if(choice==1)
         {
             cout<<"Enter base and height of the triangle : ";
-            s=&T1;
+            s= &T1;
         }
         else if(choice==2)
         {
             cout<<"Enter height and width of the rectangle : ";
-            s=&R1;
+            s= &R1;
         }
         else if(choice==3)
         {
