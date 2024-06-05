@@ -19,7 +19,7 @@ int main()
            //getline(cin,line);
             //if(line == "-1")
                // break;
-            fout<<"Hello Prateek Jain\n"<<line;
+            fout<<"Hello Vivek Kumar\n"<<line;
        // }
         cout<<"File created Successfully\n";
     }
