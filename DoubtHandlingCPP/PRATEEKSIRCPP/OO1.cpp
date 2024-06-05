@@ -62,8 +62,7 @@ ostream& operator<<(ostream &os,Person &p)
 {
     os<<"operator called\n";
     os<<"Person age "<<p.age<<" and Rank "<<p.rank<<endl;
-    return os;
-    
+    return os; 
 }
 int main()
 {

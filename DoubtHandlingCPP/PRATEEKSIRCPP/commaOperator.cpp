@@ -38,5 +38,8 @@ int main()
     //C4=(C1,C2,C3);
     Coords3D C4=(C1,C2,C3);
     C4.display();
+    Coords3D C5;
+    C5=(5,6,C4);
+    C5.display();
     return 0;
 }

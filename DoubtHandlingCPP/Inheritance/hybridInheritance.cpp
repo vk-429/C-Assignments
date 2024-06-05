@@ -5,7 +5,7 @@ class shape
     public :
         virtual void area() = 0;
 };
-class Rectangle : public shape
+class Rectangle : virtual public shape
 {
     public:
         void area()
@@ -13,7 +13,7 @@ class Rectangle : public shape
             cout<<"Rectangle area called\n";
         }
 };
-class Triangle:public shape
+class Triangle: virtual public shape
 {
     public:
         void area()
@@ -26,6 +26,7 @@ class Object:public Rectangle,public Triangle
     public:
     void area()
     {
+        cout<<"Object Area\n";
         Rectangle::area();
         Triangle::area();
     }
@@ -40,5 +41,11 @@ int main()
     Object o;
     o.area();
     //shape s;//you can't creat an object of an obstract class
+
+    shape *s;
+    s=&o;// To access anything of supream base class with the object or
+    // pointer of supream child class we must put virtual keyword before 
+    // writing access specifier at the time of inheriting 
+    s->area();
     return 0;
 }

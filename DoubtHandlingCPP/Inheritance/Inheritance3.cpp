@@ -37,6 +37,7 @@ int main()
     //b->printDerived();//invalid because we don't have printDerived inside Base class
     d=&obj2;//Valid derived pointer can point to derived object
     d->printBase();
+    d->Base::printBase();
     obj2.printBase();
     d->printDerived();
     b=&obj2;//valid base pointer can point to derived object

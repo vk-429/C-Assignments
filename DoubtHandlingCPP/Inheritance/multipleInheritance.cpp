@@ -3,6 +3,10 @@ using namespace std;
 class A 
 {
     public:
+        A()
+        {
+            cout<<"DC of A called\n";
+        }
         void printX()
         {
             cout<<"PrintX of A\n";
@@ -11,6 +15,10 @@ class A
 class B
 {
     public:
+        B()
+        {
+            cout<<"DC of B called\n";
+        }
         void printY()
         {
             cout<<"PrintY of B\n";
@@ -22,7 +30,11 @@ class B
 };
 class C : public A,public B
 {
-    
+    public:
+        C()
+        {
+            cout<<"DC of C called\n";
+        }
 };
 int main()
 {

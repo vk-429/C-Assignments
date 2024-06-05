@@ -24,23 +24,32 @@ class B:public A
     private:
         void check()
         {
-            fun1();//Here Accessible NA outside
-            fun2();//Here Accessible NA outside
+            // Private Inheritence:-
+            fun1();// Accessible anywhere in B, NA outside
+            fun2();// Accessible anywhere in B, NA outside
         }
 
     protected:
         void check1()
         {
-            fun1();//Here Accessible NA outside
-            fun2();//Here Accessible NA outside
+            // Protected Inheritence:-
+            fun1();// Accessible anywhere in B, NA outside
+            fun2();// Accessible anywhere in B, NA outside
         }
     public:
         void checkProtected()
         {
-            fun1();//Public of A Accessible
-            fun2();//Protected of A Accessible
+            // Public Inheritence:-
+            fun1();//Public of A Accessible anywhre in B and outside as well
+            fun2();//Protected of A Accessible anywhre in B and outside as well
             //fun3();//NA
             //only public and protected are accessible in derived class
+
+            // Object of B can access protected and private members of A indirectly
+            // With the help of public members of B, no matter what kind of inheritence
+            // I have done Public of B is always accessible for Object of B and, Public and
+            // Protected of B are always accessible for A, hence an object of B can access 
+            // Protected and Public members of A with the help of public member of B, anytime   
         }
 };
 int main()

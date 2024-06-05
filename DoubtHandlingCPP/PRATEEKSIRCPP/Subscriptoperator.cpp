@@ -21,6 +21,11 @@ class Array
         }
         void display(int index)
         {
+            if(index>=size)
+            {
+                cout<<"Array Index out of Bound Exception"<<endl;
+                exit(0);
+            }
             cout<<a[index]<<endl;
         }
         int operator[](int index)
@@ -43,3 +48,30 @@ int main()
     cout<<a[150];
     return 0;
 }
+
+
+/*
+
+** [] Operator
+
+The [] operator is used for array or container element access. 
+When you overload this operator, you are providing a way to access 
+elements of an object as if it were an array.
+
+Why it cannot be a non-member or friend function:
+
+Direct Element Access: The [] operator is meant to provide direct 
+access to elements within an object's internal structure, requiring 
+knowledge of the object's state. This access is naturally handled 
+within a member function context.
+
+Instance-Specific Logic: The behavior of [] often depends on the 
+specifics of the instance (e.g., bounds checking, internal data 
+storage). A member function can directly access and manipulate the 
+instance's data members.
+
+Consistent Syntax: The syntax obj[index] is straightforward and 
+intuitive when the operator is a member function. Making it a 
+non-member would complicate this syntax and reduce readability.
+
+*/

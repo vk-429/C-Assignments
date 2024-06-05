@@ -18,7 +18,7 @@ class A
             cout<<"fun3 of A called\n";
         }
 };
-class B:private A
+class B:public A
 {
     //any type of inheritance is done protected and public of A are Accesible for B anywhere in class B
     private:
@@ -50,8 +50,8 @@ class C:public B
         {
             check1();
             checkProtected();
-            //fun1();NA
-            //fun2();NA
+            fun1();//NA
+            fun2();//NA
             //fun3();NA
         }
 };

@@ -34,6 +34,8 @@ int main()
     Flight *flight1,*flight2;
     AirIndia ai;
     Spicejet sj;
+    // Flight fl;
+    // fl.Book();
     cout<<"1.AirIndia\n";
     cout<<"2.Spicejet\n\n";
     int choice;

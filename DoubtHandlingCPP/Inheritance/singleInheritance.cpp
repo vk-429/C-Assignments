@@ -37,6 +37,7 @@ class AV2:public A
         void privateFun()
         {
             cout<<"\nThis is private of AV2";
+            protectedFunA();
         }
     protected:
         void protectedFun()
@@ -66,11 +67,12 @@ class AV2:public A
 };
 int main()
 {
-    AV2 A;
-    //A A1;
+    AV2 A1;
+    A A2;
     //A1.privateFun();
     //A1.protectedFun();
-    //A1.publicFunA();
+    //A1.protectedFunA();
+    A1.publicFunA();
     AV2 a(2);
     a.publicFun();
     a.publicFunA();

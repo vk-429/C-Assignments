@@ -22,6 +22,8 @@ class Ilist
         {
             x=a;
             a1=5;
+            z++;
+            x++;
         }
         void display()
         {

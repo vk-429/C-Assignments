@@ -35,7 +35,7 @@ class Person
             cout<<"Assignment Called "<<age<<endl;
             age=p.age;
             rank=p.rank;
-            return p;
+            return *this;
         }
         Person operator+(Person &p)
         {
@@ -63,6 +63,13 @@ class Person
         {
             cout<<"Person age "<<age<<" and Rank "<<rank<<endl;
         }
+        Person operator()(int a,int r)
+        {
+            cout<<"Function call operator called\n";
+            age=a;
+            rank=r;
+            return *this;
+        }
         friend ostream& operator<<(ostream &os,Person p);
 };
 ostream& operator<<(ostream &os,Person p)
@@ -85,6 +92,10 @@ int main()
     cout<<p3;
     cout<<p3<<p1;
     //p3<<cout;
+    Person p5;
+    p5=p3;
+    p5(12,1);
+    cout<<p5;
     Person p4=++p3;
     cout<<"Prateek age "<<p1.getAge()<<" and Rank "<<p1.getRank()<<endl;
     //cout<<"Jateen age "<<p2.getAge()<<endl;

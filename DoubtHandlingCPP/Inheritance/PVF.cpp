@@ -23,8 +23,11 @@ class Triangle:public shape
 };
 int main()
 {
+    shape *s;// but can create a pointer of an abstract class
     Triangle t;
     Rectangle r;
+    s=&t;
+    s->area();
     r.area();
     t.area();
     //shape s;//you can't creat an object of an obstract class

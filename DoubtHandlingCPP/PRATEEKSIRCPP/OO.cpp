@@ -14,9 +14,13 @@ class Person
         {
             return rank;
         }
+        Person()
+        {
+            cout<<"Default constructor called"<<endl;
+        }
         Person(int a,int r)
         {
-            cout<<"Parameter constructor called"<<endl;
+            cout<<"Parameterised constructor called"<<endl;
             age=a;
             rank=r;
         }
@@ -25,10 +29,6 @@ class Person
             cout<<"Copy constructor called"<<endl;
             age=p.age;
             rank=p.rank;
-        }
-        Person()
-        {
-            cout<<"Default constructor called"<<endl;
         }
         Person operator+(Person p)
         {
@@ -75,8 +75,8 @@ int main()
     (p3++).display();
     p3.display();
     Person p4=(++p3);//compiler is optimising the code that's why copy constructor is not called here
-   // Person p5;
-    //p5=p4;
+    Person p5;
+    p5=p4;
     //cout<<"Jateen age "<<p5.getAge()<<endl;
     //p4 is passing internally like temp=p4
     cout<<"Prateek age "<<p1.getAge()<<" and Rank "<<p1.getRank()<<endl;

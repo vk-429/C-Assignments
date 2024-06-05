@@ -10,7 +10,7 @@ class mystring
         mystring()
         {
             cout<<"Default constructor called"<<endl;
-            //a=(char*)malloc(1);
+            a=(char*)malloc(1);
             size=1;
         }
         mystring(char* str)
@@ -43,12 +43,19 @@ class mystring
                 return *this;
             }
             free(a);//To free existing location
+            // If a doesn't contains a sinlge byte of memory and we will try
+            // to free it, then program will crash unexpectedly hence it is a better
+            // practice to allocate atleast 1 Byte of memory to a (in default constructor)
+            //cout<<"mai called\n";
             size=strlen(s.a);
             a=(char*)malloc(size+1);
-            //cout<<"mai called\n";
             strcpy(a,s.a);//Here we're not copying address, we're doing deep copy here
             //cout<<"tum called\n";
             return *this;
+            // When we return *this (means current object) then if return type is mystring(return object)
+            // then copy constructor will be called, else if return type is mystring&(return reference only)
+            // then copy constructor will not be called, but this happens only for *this 
+            // not for returning any other object
         }
         void display()
         {
@@ -63,7 +70,7 @@ int main()
     mystring S4("MySirG");
     mystring S5;
     S3=S1;
-    //S4=S1;
+    // //S4=S1;
 
     S1=S1;
     mystring s6;
