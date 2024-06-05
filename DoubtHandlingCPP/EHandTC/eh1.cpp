@@ -12,13 +12,13 @@ void f1()
         cout<<"\nVote for your favorit actor : \n";
         cout<<"\n1. Amir Khan";
         cout<<"\n2. Shahrukh Khan";
-        cout<<"\n3. Akshay Kumar";
+        cout<<"\n3. Akshay Kumar\n\n";
         cin>>vote;
-        cout<<"\nThanks for your vote";
+        cout<<"\nThanks for your vote\n\n";
     }
     catch(int e)
     {
-        cout<<"\nYou are not eligible to cast your vote";
+        cout<<"\nYou are not eligible to cast your vote\n\n";
     }
     cout<<"END\n";
 }

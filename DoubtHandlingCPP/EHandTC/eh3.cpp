@@ -4,7 +4,7 @@ using namespace std;
 class DivideByZero:public exception
 {
     public:
-    const char*what() const throw()
+    const char* what() const noexcept//throw()
     {
         return "Divide by zero Exception";
     }
@@ -56,7 +56,7 @@ int main()
     {
         /* code */f3();
     }
-    catch(const std::exception& e)
+    catch(const exception& e)
     {
         cout<< e.what() << '\n';
     }

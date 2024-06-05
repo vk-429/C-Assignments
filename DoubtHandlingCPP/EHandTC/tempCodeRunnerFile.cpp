@@ -1,7 +1,5 @@
-dollar operator=(Rupee R)
-        {
-            cout<<"Operator = called for doller\n";
-            dollar D;
-            D.d=R.getX()/100;
-            return D;
-        }
+operator Rupee()//Doller to Rupee
+        // {
+        //     cout<<"TC Rupee() called for daller\nRupee is above Doller\nWe can do it\n";
+        //     return d*100;
+        // }

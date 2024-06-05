@@ -24,13 +24,14 @@ class Rupee
             return x;
         }
         //friend operator int(Rupee);//invalid
+        // Must be a non-static member function
 };
 int main()
 {
     int x=5;
     Rupee r=x;
     r.display();
-    x=(int)r;
+    x=r;// x=(int)r;
     cout<<x<<"\n";
     return 0;
 }

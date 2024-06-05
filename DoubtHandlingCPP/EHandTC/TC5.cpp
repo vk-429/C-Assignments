@@ -122,12 +122,12 @@ int main()
     float y=6;
     Rupee R1=(Rupee)x;//PM for Rupee Called
     R1.display();//Display for Rupee
-    x=(float)R1;//typecast int() for Rupee
+    x=(float)R1;//typecast float() for Rupee
     cout<<x<<"\n";
 
     dollar D1=(dollar)y;//PM for Dollar
     D1.display();//Display for Dollar
-    x=(float)D1;//typecast int() for Dollar
+    x=(float)D1;//typecast float() for Dollar
     cout<<x<<"\n";
 
     R1=(Rupee)D1;//TC float() + PC wale case me yha pe rupee ka ak refence bn rha hai or

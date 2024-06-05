@@ -69,6 +69,13 @@ class dollar
             cout<<"PC Dollar(Rupee)(user defined to user defined) Called"<<endl;
             d=R.getX()/100;
         }*/
+        dollar operator=(dollar D)
+        {
+            cout<<"operator = for D1=D called\n";
+            dollar temp,t;
+            temp.d=D.d;
+            return temp.d>0?temp:t;
+        }
         dollar operator=(Rupee R)
         {
             cout<<"Operator = called for doller\n";
@@ -112,7 +119,7 @@ int main()
     R1=D1;
     R1.display();
 
-    D1=(dollar)R1;
+    D1=(dollar&)R1;
     D1.display();
     return 0;
 }

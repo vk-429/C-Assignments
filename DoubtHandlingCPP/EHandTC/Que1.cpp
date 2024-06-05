@@ -4,7 +4,7 @@ int main()
 {
     try
     {
-        throw 'a';
+        throw '0';
     }
     catch(int x)
     {

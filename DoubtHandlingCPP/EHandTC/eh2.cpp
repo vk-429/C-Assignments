@@ -35,7 +35,7 @@ void f1()
         
         if(vote>3||vote<1)
             throw 2.0;
-        cout<<"\nThanks for your vote";
+        cout<<"\nThanks for your vote\n";
     }
     catch(int e)
     {
@@ -43,7 +43,7 @@ void f1()
     }
     catch(char *n)
     {
-        cout<<n<<"You have to be Indian\n";
+        cout<<n<<" You have to be Indian\n";
     }
     catch(...)
     {
