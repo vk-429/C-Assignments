@@ -25,6 +25,7 @@ class Complex
         }
         friend Complex operator+(Complex,Complex);
         friend Complex operator-(Complex);
+        friend Complex operator-(Complex,Complex);
         Complex operator+(int k)
         {
            Complex temp;
@@ -46,6 +47,13 @@ Complex operator-(Complex X)
     Complex temp;
     temp.a=-X.a;
     temp.b=-X.b;
+    return temp;
+}
+Complex operator-(Complex X,Complex Y)
+{
+    Complex temp;
+    temp.a=X.a-Y.a;
+    temp.b=X.b-Y.b;
     return temp;
 }
 Complex /*addition,sum*/ operator+(Complex X,Complex Y)//operator

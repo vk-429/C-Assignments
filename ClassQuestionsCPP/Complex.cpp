@@ -1,6 +1,25 @@
 #include<iostream>
 using namespace std;
-//static global variable is a myth
+
+// Global vs static global variable
+
+// Visibility:
+
+// Global Variable: Visible throughout the entire program (across all files) if declared with extern in other files.
+// Static Global Variable: Visible only within the file it is declared in.
+
+// Linkage:
+
+// Global Variable: Has external linkage by default.
+// Static Global Variable: Has internal linkage, preventing it from being referenced outside the file.
+
+// Usage:
+
+// Use a global variable without static if you need to share it across multiple files.
+// Use a static global variable to restrict its visibility to the file where it's declared, ensuring no other part of the program can access or modify it directly.
+// In conclusion, while both static and non-static global variables exist for the duration of the program, the static keyword modifies the variable's linkage and scope, making it private to the file it is declared in.
+
+
 int A;//global variabe
 class Complex
 {

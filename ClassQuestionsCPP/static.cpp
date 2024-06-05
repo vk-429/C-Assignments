@@ -6,6 +6,7 @@ class Complex
 {
     private:
         int a,b;//instance member variable
+        static int k;
     public:
         void setData(int x,int y)//instance member function
         {
@@ -17,6 +18,7 @@ class Complex
             cout<<"real = "<<a<<" img = "<<b<<endl;
         }
 };
+int Complex::k;
 void f1()
 {
     int x=0;//local variable
@@ -34,6 +36,7 @@ int main()
     c2.showData();
     f1();
     f1();
+    //cout<<c1.k<<endl; // inacessible due to private
     return 0;
 } 
 
