@@ -12,48 +12,12 @@ class student
         int age;
         string stream;
     public:
-        void addStudent()
-        {       
-            ID++;
-            cout<<"\nStudent ID = "<<ID<<'\n';  
-            cout<<"Enter Student Details :-\n";   
-            cout<<"Enter name : ";
-            //fflush(stdin);
-            cin.get();
-            getline(cin,name);
-            cout<<"Enter age : ";
-            cin>>age;
-            cout<<"Enter stream : ";
-            cin.get();
-            getline(cin,stream);
-            ofstream fout;
-            fout.open("c:/File/student.txt",ios::app);
-            fout<<ID<<"\n";
-            fout<<name<<"\n";
-            fout<<age<<"\n";
-            fout<<stream<<"\n\n";
-            fout.close();
-            fout.open("c:/File/id.txt",ios::app);
-            fout<<ID<<"\n";
-            fout.close();
-            cout<<"\nrecord added successfully!\n\n";
-        }
-        void printAllStudent()
-        {
-            ifstream fin;
-            student s;
-            fin.open("c:/File/student.txt");
-            while(fin>>s.id)//(fin.eof())
-            {
-                fin.ignore();
-                getline(fin,s.name);
-                fin>>s.age;
-                fin.ignore();
-                getline(fin,s.stream);
-                s.print();
-            }
-            fin.close();
-        }
+        void addStudent();
+        void printAllStudent();
+        void searchStudent(int);
+        void updateStudent(int);
+        int deleteStudent(int);
+        
         void print()
         {
             cout<<"ID = "<<id<<endl;
@@ -62,126 +26,174 @@ class student
             cout<<"Stream = "<<stream<<endl<<endl;
             cout<<"###############################################"<<endl<<endl;
         }
-        void searchStudent(int id)
-        {
-            ifstream fin;
-            fin.open("c:/File/student.txt");
-            student s;
-            int flag=0;
-            while(fin>>s.id)
-            {
-                fin.ignore();
-                getline(fin,s.name);
-                fin>>s.age;
-                fin.ignore();
-                getline(fin,s.stream);
-                if(s.id==id)
-                {
-                    cout<<"\nStudent Details are as Follows :-\n\n";
-                    cout<<"###############################################\n\n";
-                    s.print();
-                    flag=1;
-                    break;
-                }
-            }
-            if(flag==0)
-                cout<<"\nRecord not found!!!\n\n";
-        }
-        void updateStudent(int id)
-        {
-            bool isdeleted;
-            isdeleted=deleteStudent(id);
-            if(isdeleted==false)
-            {
-                cout<<"\nRecord Not Found!!!\n";
-                return;
-            }
-            ifstream fin;
-            fin.open("c:/File/student.txt");
-            ofstream fout;
-            fout.open("c:/File/temp.txt",ios::app);
-            student s;
-
-            cout<<"\nEnter new details :-\n";
-            cout<<"Enter name : ";
-            //fflush(stdin);
-            cin.get();
-            getline(cin,name);
-            cout<<"Enter age : ";
-            cin>>age;
-            cout<<"Enter stream : ";
-            cin.get();
-            getline(cin,stream);
-            //ID=(this->id);
-            while(fin>>s.id)
-            {
-                if(s.id>id) break;
-                fin.ignore();
-                getline(fin,s.name);
-                fin>>s.age;
-                fin.ignore();
-                getline(fin,s.stream);
-                fout<<s.id<<"\n";
-                fout<<s.name<<"\n";
-                fout<<s.age<<"\n";
-                fout<<s.stream<<"\n\n";
-            }
-            
-            fout<<id<<"\n";
-            fout<<name<<"\n";
-            fout<<age<<"\n";
-            fout<<stream<<"\n\n";
-
-            do
-            {
-                fout<<s.id<<"\n";
-                fout<<s.name<<"\n";
-                fout<<s.age<<"\n";
-                fout<<s.stream<<"\n\n";
-                fin.ignore();
-                getline(fin,s.name);
-                fin>>s.age;
-                fin.ignore();
-                getline(fin,s.stream);
-            } while (fin>>s.id);
-
-            fin.close();
-            fout.close();
-            remove("c:/File/student.txt");
-            rename("c:/File/temp.txt","c:/File/student.txt");
-            cout<<"\nRecord Updated Successfully!\n\n";
-        }
-        int deleteStudent(int id)
-        {
-            ifstream fin;
-            fin.open("c:/File/student.txt");
-            ofstream fout;
-            fout.open("c:/File/temp.txt",ios::app);
-            student s;
-            int flag=0;
-            while(fin>>s.id)
-            {
-                fin.ignore();
-                getline(fin,s.name);
-                fin>>s.age;
-                fin.ignore();
-                getline(fin,s.stream);
-                if(s.id!=id)
-                {
-                    fout<<s.id<<"\n";
-                    fout<<s.name<<"\n";
-                    fout<<s.age<<"\n";
-                    fout<<s.stream<<"\n\n";
-                }
-                if(s.id==id){flag=1;}
-            }
-            fin.close();
-            fout.close();
-            remove("c:/File/student.txt");
-            rename("c:/File/temp.txt","c:/File/student.txt");
-            return flag;
-        }
 };
+
+int student::deleteStudent(int id)
+{
+    ifstream fin;
+    fin.open("c:/File/student.txt");
+    ofstream fout;
+    fout.open("c:/File/temp.txt",ios::app);
+    student s;
+    int flag=0;
+    while(fin>>s.id)
+    {
+        fin.ignore();
+        getline(fin,s.name);
+        fin>>s.age;
+        fin.ignore();
+        getline(fin,s.stream);
+        if(s.id!=id)
+        {
+            fout<<s.id<<"\n";
+            fout<<s.name<<"\n";
+            fout<<s.age<<"\n";
+            fout<<s.stream<<"\n\n";
+        }
+        if(s.id==id){flag=1;}
+    }
+    fin.close();
+    fout.close();
+    remove("c:/File/student.txt");
+    rename("c:/File/temp.txt","c:/File/student.txt");
+    return flag;
+}
+
+void student::updateStudent(int id)
+{
+    bool isdeleted;
+    isdeleted=deleteStudent(id);
+    if(isdeleted==false)
+    {
+        cout<<"\nRecord Not Found!!!\n";
+        return;
+    }
+    ifstream fin;
+    fin.open("c:/File/student.txt");
+    ofstream fout;
+    fout.open("c:/File/temp.txt",ios::app);
+    student s;
+
+    cout<<"\nEnter New Details :-\n";
+    cout<<"Enter Name : ";
+    //fflush(stdin);
+    cin.get();
+    getline(cin,name);
+    cout<<"Enter Age : ";
+    cin>>age;
+    cout<<"Enter Stream : ";
+    cin.get();
+    getline(cin,stream);
+    //ID=(this->id);
+    while(fin>>s.id)
+    {
+        if(s.id>id) break;
+        fin.ignore();
+        getline(fin,s.name);
+        fin>>s.age;
+        fin.ignore();
+        getline(fin,s.stream);
+        fout<<s.id<<"\n";
+        fout<<s.name<<"\n";
+        fout<<s.age<<"\n";
+        fout<<s.stream<<"\n\n";
+    }
+    
+    fout<<id<<"\n";
+    fout<<name<<"\n";
+    fout<<age<<"\n";
+    fout<<stream<<"\n\n";
+
+    do
+    {
+        fout<<s.id<<"\n";
+        fout<<s.name<<"\n";
+        fout<<s.age<<"\n";
+        fout<<s.stream<<"\n\n";
+        fin.ignore();
+        getline(fin,s.name);
+        fin>>s.age;
+        fin.ignore();
+        getline(fin,s.stream);
+    } while (fin>>s.id);
+
+    fin.close();
+    fout.close();
+    remove("c:/File/student.txt");
+    rename("c:/File/temp.txt","c:/File/student.txt");
+    cout<<"\nRecord Updated Successfully!\n\n";
+}
+
+void student::searchStudent(int id)
+{
+    ifstream fin;
+    fin.open("c:/File/student.txt");
+    student s;
+    int flag=0;
+    while(fin>>s.id)
+    {
+        fin.ignore();
+        getline(fin,s.name);
+        fin>>s.age;
+        fin.ignore();
+        getline(fin,s.stream);
+        if(s.id==id)
+        {
+            cout<<"\nStudent Details Are as Follows :-\n\n";
+            cout<<"###############################################\n\n";
+            s.print();
+            flag=1;
+            break;
+        }
+    }
+    if(flag==0)
+        cout<<"\nRecord Not Found!!!\n\n";
+}
+
+void student::printAllStudent()
+{
+    ifstream fin;
+    student s;
+    fin.open("c:/File/student.txt");
+    while(fin>>s.id)//(fin.eof())
+    {
+        fin.ignore();
+        getline(fin,s.name);
+        fin>>s.age;
+        fin.ignore();
+        getline(fin,s.stream);
+        s.print();
+    }
+    fin.close();
+}
+
+void student::addStudent()
+{       
+    ID++;
+    cout<<"\nStudent ID = "<<ID<<'\n';  
+    cout<<"Enter Student Details :-\n";   
+    cout<<"Enter Name : ";
+    //fflush(stdin);
+    cin.get();
+    getline(cin,name);
+    cout<<"Enter Age : ";
+    cin>>age;
+    cout<<"Enter Stream : ";
+    cin.get();
+    getline(cin,stream);
+    ofstream fout;
+    fout.open("c:/File/student.txt",ios::app);
+    fout<<ID<<"\n";
+    fout<<name<<"\n";
+    fout<<age<<"\n";
+    fout<<stream<<"\n\n";
+    fout.close();
+    fout.open("c:/File/id.txt",ios::app);
+    fout<<ID<<"\n";
+    fout.close();
+    cout<<"\nRecord Added Successfully!\n\n";
+}
+
 int main()
 {
     int choice;
