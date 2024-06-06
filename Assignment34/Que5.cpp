@@ -14,6 +14,7 @@ int main()
     {
         while(getline(fin,line))
             fout<<line<<"\n";
+        cout<<"File 1 and File 2 Are Merged Within File 2\n";
     }
     else
         cout<<"Error opening the file\n";

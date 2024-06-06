@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<cstring>
+#include <limits>
 using namespace std;
 class Item
 {
@@ -10,36 +10,28 @@ class Item
         string name;
         int price;
     public:
-        friend void getInput(Item[]);
-        void Print();
-        friend void Sort(Item[],int);
+        friend void getInput(Item*);
+        friend void OverWrite(Item*,int);
+        friend void Sort(Item*,int);
 };
-void Sort(Item I[],int n)
+void Sort(Item *I,int n)
 {
     int i,j;
-    string temp,temp1;
-    int t;
+    Item temp;
     for(i=0;i<n-1;i++)
     {
-       
-        for(j=i+1;i<n;i++)
+        for(j=i+1;j<n;j++)
         {
-            if(I[i].price>I[j].price)
+            if(I[j].price>I[i].price)
             {
-                temp=I[i].code;
-                I[i].code=I[j].code;
-                I[j].code=temp;
-                temp1=I[i].name;
-                I[i].name=I[j].name;
-                I[j].name=temp1;
-                t=I[i].price;
-                I[i].price=I[j].price;
-                I[j].price=t;
+                temp=I[i];
+                I[i]=I[j];
+                I[j]=temp;
             }
         }
     }
 }
-void getInput(Item I[])
+void getInput(Item *I)
 {
     ifstream fin;
     fin.open("c:/File/Item.txt",ios::in);
@@ -47,37 +39,33 @@ void getInput(Item I[])
         cout<<"Error Opening File\n";
     else
     {
-        int i=0,j,r;
-        while(!(fin.eof()))
+        int i=0;
+        while(getline(fin,I[i].code))
         {
-            j=i/3;
-            r=i%3;
-            string s;
-            if(i%3==0&&(i!=0))
-                fin.ignore();
-            getline(fin,s);
-            //cout<<s<<"\n";
-            if(r==0)
-                I[j].code=s;
-            if(r==1)
-                I[j].name=s;
-            if(r==2)
-                I[j].price=(stoi(s));
-            
+            getline(fin,I[i].name);
+            fin>>I[i].price;
+            fin.ignore(numeric_limits<streamsize>::max(), '\n');
+            fin.ignore(numeric_limits<streamsize>::max(), '\n');
             i++;
         }
         fin.close();
     }
 }
-void Item::Print()
+void OverWrite(Item *I,int n)
 {
-    ofstream fout;
-    fout.open("c:/File/c.txt",ios::out);
-    fout<<code;
-    fout<<name;
-    fout<<price;
-    fout.close();
-     
+    ofstream fout("c:/File/Item.txt", ios::out | ios::trunc);
+    if (!fout) 
+        cout << "Error Opening File\n";
+    else 
+    {
+        for (int i = 0; i < n; i++) 
+        {
+            fout << I[i].code << "\n";
+            fout << I[i].name << "\n";
+            fout << I[i].price << "\n\n";
+        }
+        fout.close();
+    }  
 }
 int main()
 {
@@ -85,7 +73,6 @@ int main()
     getInput(I);
     int i;
     Sort(I,50);
-    for(i=0;i<50;i++)
-        I[i].Print();
+    OverWrite(I,50);
     return 0;
 }

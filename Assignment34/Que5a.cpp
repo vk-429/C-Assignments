@@ -46,7 +46,7 @@ int main()
             }
         }
     }
-    cout<<"Two files have been merged into "<<file_name3<<"\n";
+    cout<<file_name1<<" and "<<file_name2<<" Have Been Merged Into "<<file_name3<<"\n";
     fin1.close();
     fin2.close();
     fout.close();

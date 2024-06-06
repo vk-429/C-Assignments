@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     ifstream fin;
-    fin.open("c:/File/a.txt",ios::in);
+    fin.open("c:/File/new.txt",ios::in);
     char ch;
     int c1=0,c2=0,c3=0;
     if(fin)
@@ -19,7 +19,6 @@ int main()
             {
                 c3++;
                 c2++;
-                c1--;
             }
         }
         cout<<"Characters = "<<c1<<"\nWords = "<<c2<<"\nLines = "<<c3<<"\n";

@@ -6,22 +6,18 @@ using namespace std;
 int main()
 {
     ifstream fin;
-    fin.open("C:/File/student.txt",ios::in);
+    fin.open("C:/File/vivek.java",ios::in);
     char ch;
-    char pch='\0';
     int count=0;
     if(fin)
     {
         fin.seekg(0,ios_base::beg);
-        while(!fin.eof())
+        while(fin.get(ch))
         {
-            fin>>ch;
-            if(pch!='\0')
-            cout<<pch<<"\n";
+            cout<<ch;
             count++;
-            pch=ch;
         } 
-        cout<<count-1<<"\n";
+        cout<<"\n"<<count<<"\n";
     }
     else
         cout<<"File not created or not able to open the file\n";

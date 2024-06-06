@@ -12,7 +12,7 @@ int main()
         cout<<"File not created or unable to open the file\n";
     else
     {
-        fout<<"HELLO VIVEK\n";
+        fout<<"THIS IS A JAVA FILE\n";
         cout<<"File created successfully\n";
     }
     fout.close();

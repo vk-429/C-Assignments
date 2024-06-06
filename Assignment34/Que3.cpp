@@ -10,7 +10,7 @@ int main()
     fout.open("c:/File/a.txt",ios::app);
     if(fout)
     {
-        cout<<"Enter the data : ";
+        cout<<"Enter the data(Enter -1 if You Have Entered All The Data): ";
         while(fout)
         {
             getline(cin,line);
