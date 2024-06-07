@@ -11,8 +11,10 @@ class Time
         Time(int t)
         {
             hr=t/3600;
-            min=(t%3600)/60;
-            sec=(t%60);
+            t%=3600;
+            min=t/60;
+            t%=60;
+            sec=t;
         }
         void display()
         {

@@ -8,8 +8,13 @@ int main()
     int i;
     try
     {
-        for(i=0;str[i];i++);
-        if(i!=6)
+        int count=0;
+        for(i=0;str[i];i++)
+        {
+            if(str[i]>='0'&&str[i]<='9')
+                count++;
+        }
+        if(count!=6)
             throw("ERROR !\nEntered Pin Code does'nt contain 6 digits\n");
     }
     catch(const char *p)

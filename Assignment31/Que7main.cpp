@@ -133,6 +133,8 @@ int main()
             case 2:
             {
                 cout<<"\n";
+                if(E.size()==0)
+                    cout<<"Nothing to Display!\n\n";
                 for (const auto& employee : E) {
                     employee->displayDetails();
                 }

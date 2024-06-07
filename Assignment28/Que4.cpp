@@ -8,18 +8,41 @@ class Student
         int age;
     public:
         Student(){}
-        void* operator new(size_t size) 
+        static void* operator new(size_t size) 
         {
-            std::cout << "Custom new operator called. Size: " << size << " bytes." << std::endl;
+            cout << "Custom new operator called. Size: " << size << " bytes." << endl;
             void* ptr = ::new Student();  // Using global new operator to allocate memory
             return ptr;
         }
 
-        void operator delete(void* ptr) noexcept
+        /*
+            In C++, a void* (void pointer) is a special type of pointer that 
+            can hold the address of any data type. This feature makes void* pointers 
+            very versatile for generic programming and memory management tasks.
+
+            Why Not Directly Use Student*?
+            
+            If you define operator delete to take a Student* instead of void*, 
+            it will not match the standard signature expected by the compiler 
+            and the C++ runtime system. This mismatch can lead to undefined behavior 
+            or compilation errors because the compiler expects a uniform way to call 
+            operator delete.
+
+            Type Casting in operator delete:
+
+            By receiving a void* and casting it back to the appropriate type 
+            (Student* in this case), you ensure that the memory is correctly 
+            interpreted and deallocated.
+
+            The standard signature of operator delete looks like this:
+            void operator delete(void* ptr) noexcept;
+
+        */
+        static void operator delete(void* ptr) noexcept
         {
-            std::cout << "Custom delete operator called." << std::endl;
+            cout << "Custom delete operator called." << endl;
             ::delete static_cast<Student*>(ptr);//(Student*)(ptr);//static_cast<char*>(ptr);  // Using global delete operator to deallocate memory
-            cout<<"work has done\n";
+            cout<<"work has been done\n";
         }
 
         // Other member functions and data members...

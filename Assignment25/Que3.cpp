@@ -4,7 +4,7 @@ class Factorial
 {
     private:
         int n;
-        int fact;
+        long long int fact;
     public:
         void setN(int x)
         {
@@ -20,15 +20,8 @@ class Factorial
             int i;
             for(i=2;i<=n;i++)
                 fact*=i;
-            /*
-            int f=1;
-            int i;
-            for(i=2;i<=n;i++)
-                f*=i;
-            fact=f;
-            */
         }
-        int getFact()
+        long long int getFact()
         {
             return fact;
         }
@@ -36,7 +29,7 @@ class Factorial
 int main()
 {
     Factorial F1,F2;
-    F1.setN(6);
+    F1.setN(19);
     F2.setN(7);
     F1.CalculateFact();
     F2.CalculateFact();

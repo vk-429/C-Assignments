@@ -19,7 +19,7 @@ class Array
             }
             a[index]=n;
         }
-        int& operator[](int index)
+        int operator[](int index)
         {
             if(index>=size)
             {

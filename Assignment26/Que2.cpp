@@ -38,12 +38,7 @@ class Time
                 s-=60;
             }
         }
-        /*
-        m=m+s/60;
-        s=sec%60;
-        h=h+m/60;
-        m=m%60;
-        */
+        
         Time add(Time T)
         {
             Time temp;

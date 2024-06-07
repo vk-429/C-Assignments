@@ -25,29 +25,43 @@ class Student
         }
 };
 
+class Person
+{
+    private:
+        string name;
+        int age;
+    public:
+        Person(){name="";age=0;}
+        Person(string name,int age):name(name),age(age){};
+        void Display(){cout<<"Name = "<<name<<"\nAge = "<<age<<"\n\n";}
+};
+
+// These Operators will work to allocate memory for a variable of any data type
+
 void* operator new(size_t size) 
 {
-    std::cout << "Custom new operator called. Size: " << size << " bytes." << std::endl;
-    void* ptr = ::new char[size];
+    cout << "Custom new operator called. Size: " << size << " bytes." << endl;
+    void* ptr = ::new char[size]; // We don't know the size of object that's why 
+    //allocate memory using char array char variable, bcz its size is 1byte
     return ptr;
 }
-// void operator delete(void* ptr) noexcept 
-// {
-//     std::cout << "Custom delete operator called." << std::endl;
-//     ::delete[] static_cast<char*>(ptr);
-// }
+
 void operator delete(void* ptr) noexcept 
 {
-    std::cout << "Custom delete operator called." << std::endl;
+    cout << "Custom delete operator called." << endl;
     ::delete[] static_cast<char*>(ptr);  // Using global delete operator to deallocate memory
 }
 
 int main() 
 {
     Student* student = new Student();
-    
+    int *p=new int[50]; // if we allocate memory for predefined data type it will use predefined new operator
     student->inputData();
     student->showData();
     operator delete(student) ;
+
+    Person* person = new Person();
+    operator delete (person);
+
     return 0;
 }

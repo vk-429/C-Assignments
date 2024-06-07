@@ -32,7 +32,7 @@ class Complex
             cout<<"Real = "<<real<<"\n";
             cout<<"Img = "<<img<<"\n";
         }
-    friend void Exchange(Complex&,Integer&);
+        friend void Exchange(Complex&,Integer&);
 };
 class Integer
 {
@@ -47,7 +47,7 @@ class Integer
         {
             cout<<"Integer = "<<a<<"\n";
         }
-    friend void Exchange(Complex&,Integer&);
+        friend void Exchange(Complex&,Integer&);
 };
 void Exchange(Complex& C,Integer& I)
 {

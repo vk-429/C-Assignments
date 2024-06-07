@@ -37,10 +37,7 @@ class Complex
         }
         bool operator==(Complex C)
         {
-            if(real==C.real&&img==C.img)
-                return true;
-            else
-                return false;
+            return (real==C.real&&img==C.img);
         }
 };
 int main()

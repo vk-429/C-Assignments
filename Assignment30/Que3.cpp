@@ -58,6 +58,8 @@ int main()
                 break;
             case 2:
                 exit(0);
+            default:
+                cout<<"\nInvalid Choice!\n\n";
         }
         p:cout<<"################################################################\n\n";
     }

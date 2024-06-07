@@ -6,7 +6,7 @@ class Time
         int hr;
         int min;
     public:
-        Time(){}
+        Time(){hr=0;min=0;}
         Time(int h,int m)
         {
             hr=h;
@@ -26,7 +26,7 @@ class Minutes
     private:
         int minutes;
     public:
-        Minutes(){}
+        Minutes(){minutes=0;}
         Minutes(Time T)
         {
             minutes=T.getMin();

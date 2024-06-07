@@ -13,10 +13,7 @@ class Time
         }
         bool operator==(Time T)
         {
-            if(hr==T.hr&&min==T.min&&sec==T.sec)
-                return true;
-            else 
-                return false;
+            return (hr==T.hr&&min==T.min&&sec==T.sec);
         }
         friend istream& operator>>(istream &,Time&);
         friend ostream& operator<<(ostream &,Time&);

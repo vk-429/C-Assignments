@@ -4,7 +4,7 @@ using namespace std;
 class CString
 {
     private:
-        char S[20];
+        char S[100];
     public:
         void input()
         {
@@ -23,12 +23,7 @@ class CString
         }
         bool operator==(CString S1)
         {
-            int r;
-            r=strcmp(S,S1.S);
-            if(r==0)
-                return true;
-            else
-                return false;
+            return (strcmp(S,S1.S)==0);
         }
 };
 CString operator+(CString S1,CString S2)

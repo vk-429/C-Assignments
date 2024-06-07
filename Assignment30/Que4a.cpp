@@ -13,6 +13,8 @@ bool isValidEmailID(string email)
             DotOffset=i;
         length++;
     }
+    if(AtOffset+1==DotOffset)
+        return 0;
     if(AtOffset==-1||DotOffset==-1)
         return 0;
     if(AtOffset>DotOffset)

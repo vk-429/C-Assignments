@@ -78,7 +78,6 @@ int main()
                 cin>>H>>B;
                 Triangle T1(B,H);
                 s=&T1;
-                s->Area();
             }
                 break;
             case 2:
@@ -88,7 +87,6 @@ int main()
                 cin>>l>>b;
                 Rectangle R1(l,b);
                 s=&R1;
-                s->Area();
             }
                 break;
             case 3:
@@ -98,15 +96,16 @@ int main()
                 cin>>r;
                 Circle C1(r);
                 s=&C1;
-                s->Area();
             }
                 break;
             case 4:
                 cout<<"Exiting Program\n";
                 break;
             default:
-                cout<<"Invalid choice! Please try again\n";
+                cout<<"Invalid choice! Please try again\n\n";
         }
+        if(choice>0 && choice<4)
+            s->Area();
     } while (choice!=4);
     return 0;
 }

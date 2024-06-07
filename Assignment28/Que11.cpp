@@ -17,7 +17,7 @@ class Marks
         {
             cout<<"Marks = "<<marks<<endl;
         }
-        Marks *operator->()
+        Marks *operator->() // Return a Pointer of Marks which is storing the address of calling object
         {
             return this;
         }
@@ -26,6 +26,6 @@ int main()
 {
     Marks M1(98);
     M1.printMarks();
-    M1->printMarks();
+    M1->printMarks(); // Now we can use arrow operator with the object also
     return 0;
 }

@@ -12,7 +12,7 @@ int main()
 void Prime(int m)
 {
     int i,flag=0;
-    for(i=2;i<=(m/2);i++)
+    for(i=2;i*i<=m;i++)
     {
         if(m%i==0)
         {
@@ -20,7 +20,7 @@ void Prime(int m)
             break;
         }
     }
-    if(flag==1)
+    if(flag==1 || m==1)
         cout<<"Number is not prime";
     else
         cout<<"Number is prime";

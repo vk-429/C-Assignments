@@ -1,14 +1,13 @@
 #include<iostream>
 using namespace std;
-float Area(int);
-int Area(int,int);
-float Area(int,float);
+double Area(double);
+double Area(double,double);
+double Area(int,int);
 int main()
 {
-    int r;
-    int a,b;
-    float H;
-    int B;
+    double r;
+    double a,b;
+    int B, H;
     cout<<"Enter the radius of the circle : ";
     cin>>r;
     cout<<"Area of the circle is "<<Area(r);
@@ -19,15 +18,15 @@ int main()
     cin>>B>>H;
     cout<<"Area of the triangle is "<<Area(B,H);
 }
-float Area(int rad)
+double Area(double rad)
 {
     return 3.14*rad*rad;
 }
-int Area(int x,int y)
+double Area(double x,double y)
 {
     return x*y;
 }
-float Area(int b,float h)
+double Area(int b,int h)
 {
     return 0.5*b*h;
 }

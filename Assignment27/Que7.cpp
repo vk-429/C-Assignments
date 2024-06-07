@@ -5,7 +5,6 @@ class Fraction
     private:
         long numerator;
         long denominator;
-        long fractio;
     public:
         Fraction()
         {

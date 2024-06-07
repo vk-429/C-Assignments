@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+class Manager;
 class Person
 {
     private:
@@ -9,6 +10,7 @@ class Person
     public:
         void inputPerson()
         {
+            cin.ignore();
             cout<<"Enter Name : ";
             cin.getline(name,20);
             cout<<"Enter Address : ";
@@ -27,10 +29,11 @@ class Employee:public Person
     private:
         int eno;
     public:
-        void inputEno()
+        void inputEmp()
         {
             cout<<"Enter Employee No. : ";
             cin>>eno;
+            inputPerson();
         }
 };
 class Manager:public Employee
@@ -44,9 +47,7 @@ class Manager:public Employee
         {
             static int i=1;
             cout<<"\nEnter details of manager "<<i<<" :-\n";
-            inputEno();
-            cin.ignore();
-            inputPerson();
+            inputEmp();
             cin.ignore();
             cout<<"Enter Designation : ";
             cin.getline(des,40);

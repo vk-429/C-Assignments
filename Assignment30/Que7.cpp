@@ -10,9 +10,9 @@ int main()
     {
         for(i=0;str[i];i++)
         {
-            if((str[i]>=48)&&(str[i]<=57))
+            if((str[i]>='0')&&(str[i]<='9'))
                 c1++;
-            if(str[i]<48||(str[i]>57&&str[i]<65)||(str[i]>90&&str[i]<97)||str[i]>122)
+            if(str[i]<'0'||(str[i]>'9'&&str[i]<'A')||(str[i]>'Z'&&str[i]<'a')||str[i]>'Z')
                 c2++;
         }
         if(c1==0||c2==0||i>6)
