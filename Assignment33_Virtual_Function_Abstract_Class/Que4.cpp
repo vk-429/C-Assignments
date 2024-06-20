@@ -7,7 +7,7 @@ class shape
         double a;
         double b;
     public:
-        void get_data(double a,double b)
+        void set_data(double a,double b)
         {
             this->a=a;
             this->b=b;
@@ -66,7 +66,7 @@ int main()
             continue;
         }
         cin>>a>>b;
-        s->get_data(a,b);
+        s->set_data(a,b);
         s->display_Area();
     }
     return 0;

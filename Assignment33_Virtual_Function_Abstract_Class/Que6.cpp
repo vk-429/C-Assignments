@@ -7,7 +7,7 @@ class shape
         double a;
         double b;
     public:
-        void get_data(double a,double b=0)
+        void set_data(double a,double b=0)
         {
             this->a=a;
             this->b=b;
@@ -62,21 +62,21 @@ int main()
             cout<<"Enter base and height of the triangle : ";
             cin>>a>>b;
             s = &T1;
-            s->get_data(a,b);
+            s->set_data(a,b);
         }
         else if(choice==2)
         {
             cout<<"Enter height and width of the rectangle : ";
             cin>>a>>b;
             s = &R1;
-            s->get_data(a,b);
+            s->set_data(a,b);
         }
         else if(choice==3)
         {
             cout<<"Enter radius of the circle : ";
             cin>>a;
             s = &C1;
-            s->get_data(a);
+            s->set_data(a);
         }
         else if(choice==4)
         {
